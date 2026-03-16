@@ -1,30 +1,51 @@
+
+/**
+ * A simple implementation of the Caesar cipher for encrypting and decrypting messages.
+ * The Caesar cipher is a substitution cipher where each letter in the plaintext is
+ * shifted a certain number of places down the alphabet. This implementation assumes
+ * that the input messages consist of uppercase letters only and does not handle
+ * non-alphabetic characters.
+ */
 public class CeaserCipher {
 
     static final String ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     /**
-     *
+     * Encrypts a plaintext message using the Caesar cipher with a given shift.
+     * Each letter in the plaintext is shifted by the specified number of positions
+     * in the alphabet, wrapping around if necessary. Non-alphabetic characters are not handled.
+     * @param plaintext the message to encrypt
+     * @param shift the number of positions to shift each letter (positive for right shift)
+     * @return the encrypted ciphertext
      */
-    public static String encrypt(String input, int shift) {
+    public static String encrypt(String plaintext, int shift) {
 
-        StringBuilder cypher = new StringBuilder();
+        StringBuilder cipher = new StringBuilder();
 
-        for (int i = 0; i<input.length();  i++) {
-            int index = ALPHABET.indexOf(input.charAt(i));
+        for (int i = 0; i < plaintext.length(); i++) {
+            int index = ALPHABET.indexOf(plaintext.charAt(i));
             char newChar = ALPHABET.charAt((index + shift) % ALPHABET.length());
-            cypher.append(newChar);
+            cipher.append(newChar);
 
         }
 
-        return cypher.toString();
+        return cipher.toString();
     }
 
-    public static String decrypt(String cypher, int shift) {
+    /**
+     * Decrypts a ciphertext message using the Caesar cipher with a given shift.
+     * Each letter in the ciphertext is shifted back by the specified number of positions
+     * in the alphabet, wrapping around if necessary. Non-alphabetic characters are not handled.
+     * @param ciphertext the encrypted message to decrypt
+     * @param shift the number of positions the letters were shifted (positive for right shift)
+     * @return the decrypted plaintext
+     */
+    public static String decrypt(String ciphertext, int shift) {
 
-        StringBuilder message = new StringBuilder();
+        StringBuilder plaintext = new StringBuilder();
 
-        for (int i = 0; i<cypher.length();  i++) {
-            int index = ALPHABET.indexOf(cypher.charAt(i));
+        for (int i = 0; i < ciphertext.length(); i++) {
+            int index = ALPHABET.indexOf(ciphertext.charAt(i));
 
             int rotIndex;
             if (index < shift) {
@@ -33,24 +54,24 @@ public class CeaserCipher {
                 rotIndex = index - shift;
             }
             char newChar = ALPHABET.charAt(rotIndex);
-            message.append(newChar);
+            plaintext.append(newChar);
 
         }
 
-        return message.toString();
+        return plaintext.toString();
     }
 
 
     public static void main(String[] args) {
         String message = "TRAVELEAST";
-        int rotation = 15;
+        int shift = 15;
 
         System.out.println(message);
 
-        String cypher = encrypt(message, rotation);
-        System.out.println(cypher);
+        String cipher = encrypt(message, shift);
+        System.out.println(cipher);
 
-        String originalMessage = decrypt(cypher, rotation);
+        String originalMessage = decrypt(cipher, shift);
         System.out.println(originalMessage);
 
 
