@@ -3,7 +3,6 @@ public class CeaserCipher {
     static final String ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     public static String encrypt(String input, int shift) {
-        int alphabetLen = ALPHABET.length();
 
         StringBuilder cypher = new StringBuilder();
 
@@ -18,7 +17,6 @@ public class CeaserCipher {
     }
 
     public static String decrypt(String cypher, int shift) {
-        int alphabetLen = ALPHABET.length();
 
         StringBuilder message = new StringBuilder();
 
