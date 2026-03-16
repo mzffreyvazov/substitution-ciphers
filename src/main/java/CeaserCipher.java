@@ -22,7 +22,14 @@ public class CeaserCipher {
 
         for (int i = 0; i<cypher.length();  i++) {
             int index = ALPHABET.indexOf(cypher.charAt(i));
-            char newChar = ALPHABET.charAt((index - shift) % ALPHABET.length());
+
+            int rotIndex;
+            if (index < shift) {
+                rotIndex = ALPHABET.length() + (index - shift);
+            } else {
+                rotIndex = index - shift;
+            }
+            char newChar = ALPHABET.charAt(rotIndex);
             message.append(newChar);
 
         }
@@ -33,7 +40,7 @@ public class CeaserCipher {
 
     public static void main(String[] args) {
         String message = "TRAVELEAST";
-        int rotation = 3;
+        int rotation = 15;
 
         System.out.println(message);
 
