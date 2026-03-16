@@ -2,6 +2,9 @@ public class CeaserCipher {
 
     static final String ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
+    /**
+     *
+     */
     public static String encrypt(String input, int shift) {
 
         StringBuilder cypher = new StringBuilder();
