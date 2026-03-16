@@ -8,7 +8,7 @@ public class CeaserCipher {
 
         for (int i = 0; i<input.length();  i++) {
             int index = ALPHABET.indexOf(input.charAt(i));
-            char newChar = ALPHABET.charAt(index + shift);
+            char newChar = ALPHABET.charAt((index + shift) % ALPHABET.length());
             cypher.append(newChar);
 
         }
@@ -22,7 +22,7 @@ public class CeaserCipher {
 
         for (int i = 0; i<cypher.length();  i++) {
             int index = ALPHABET.indexOf(cypher.charAt(i));
-            char newChar = ALPHABET.charAt(index - shift);
+            char newChar = ALPHABET.charAt((index - shift) % ALPHABET.length());
             message.append(newChar);
 
         }
