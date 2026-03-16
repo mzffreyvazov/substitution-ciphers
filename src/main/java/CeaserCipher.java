@@ -1,5 +1,9 @@
 public class CeaserCipher {
     public static void main(String[] args) {
         System.out.println("Hello world");
+
+
     }
+
+    static final String ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 }
