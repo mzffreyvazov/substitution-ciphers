@@ -1,11 +1,10 @@
 public class RussianNihilistCipher {
-    PolybiusCipher polybiusCipher = new PolybiusCipher();
 
     public String encrypt(String plainText, String key) {
         StringBuilder output = new StringBuilder();
 
-        String plainEncoded = polybiusCipher.encrypt(plainText);
-        String keyEncoded = polybiusCipher.encrypt(key);
+        String plainEncoded = PolybiusCipher.encrypt(plainText);
+        String keyEncoded = PolybiusCipher.encrypt(key);
 
         for (int i = 0; i < plainEncoded.length(); i += 2) {
             int textInt = Integer.parseInt(plainEncoded.substring(i, i + 2));
@@ -25,7 +24,7 @@ public class RussianNihilistCipher {
     public String decrypt(String cipherText, String key) {
         StringBuilder polybiusEncoded = new StringBuilder();
 
-        String keyEncoded = polybiusCipher.encrypt(key);
+        String keyEncoded = PolybiusCipher.encrypt(key);
         String[] tokens = cipherText.split(" ");
 
         for (int i = 0; i < tokens.length; i++) {
@@ -40,7 +39,7 @@ public class RussianNihilistCipher {
             polybiusEncoded.append(textInt);
         }
 
-        return polybiusCipher.decrypt(polybiusEncoded.toString());
+        return PolybiusCipher.decrypt(polybiusEncoded.toString());
     }
 
     public static void main(String[] args) {
