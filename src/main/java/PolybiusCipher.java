@@ -18,8 +18,8 @@ public class PolybiusCipher {
             int row = plainTextIndex / 5;
             int col = plainTextIndex % 5;
 
-            cipher.append(Integer.toString(row));
-            cipher.append(Integer.toString(col));
+            cipher.append(row);
+            cipher.append(col);
         }
 
         return cipher.toString();
